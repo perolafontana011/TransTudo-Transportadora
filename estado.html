@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>TransTudo em Minas Gerais</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      color: #003366;
+    }
+    p {
+      max-width: 800px;
+      margin: 20px auto;
+      line-height: 1.6;
+    }
+    img {
+      max-width: 500px;
+      width: 200px;
+      margin-top: 20px;
+      border-radius: 8px;
+    }
+    footer {
+      margin-top: 40px;
+      color: #666;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="titulo">TransTudo em Minas Gerais</h1>
+  <p>
+    A <strong>TransTudo</strong> está presente em <span id="estado">[Estado]</span>, oferecendo soluções logísticas sob medida para empresas e clientes da região. Com frota moderna, equipe especializada e rastreamento em tempo real, garantimos entregas seguras, pontuais e com cobertura nacional.
+  </p>
+  <img src="../imagens/Copilot_20250826_105820.png" alt="Imagem da transportadora TransTudo">
+
+  <footer>
+    <p>&copy; 2025 TransTudo Transportes. Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const estado = params.get("nome");
+
+    if (estado) {
+      document.getElementById("titulo").textContent = `TransTudo em ${estado}`;
+      document.getElementById("estado").textContent = estado;
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>TransTudo - Entregamos para todo o Brasil</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+    header {
+      background-color: #0077b6;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    #map {
+      height: 90vh;
+      width: 100%;
+    }
+    footer {
+      background-color: #023e8a;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>TransTudo</h1>
+    <p>Entregamos para todos os estados do Brasil com agilidade e segurança</p>
+    <p> (11) 91234-5678</p>
+  </header>
+
+  <div id="map"></div>
+
+  <footer>
+    <p>&copy; 2025 TransTudo Transportes. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const map = L.map('map').setView([-15.78, -47.93], 4);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap'
+    }).addTo(map);
+
+    const estados = [
+      { nome: "Paraná", lat: -24.7, lon: -51.9 },
+      { nome: "São Paulo", lat: -23.5, lon: -46.6 },
+      { nome: "Bahia", lat: -12.9, lon: -38.5 },
+      { nome: "Minas Gerais", lat: -19.9, lon: -43.9 },
+      { nome: "Rio de Janeiro", lat: -22.9, lon: -43.2 },
+      { nome: "Rio Grande do Sul", lat: -30.0, lon: -51.2 },
+      { nome: "Santa Catarina", lat: -27.6, lon: -48.5 },
+      { nome: "Pernambuco", lat: -8.0, lon: -34.9 },
+      { nome: "Amazonas", lat: -3.1, lon: -60.0 },
+      { nome: "Distrito Federal", lat: -15.8, lon: -47.9 }
+    ];
+
+    estados.forEach(e => {
+      L.circleMarker([e.lat, e.lon], {
+        radius: 10,
+        color: "#003366",
+        fillColor: "#3399ff",
+        fillOpacity: 0.8
+      }).addTo(map).on('click', () => {
+        window.location.href = `estado.html?nome=${encodeURIComponent(e.nome)}`;
+      });
+    });
+  </script>
+
+</body>
+</html>
